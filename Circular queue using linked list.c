@@ -9,7 +9,6 @@ struct Node {
 struct Node *head = NULL;
 struct Node *tail = NULL;
 
-
 void enqueue(int value) {
     struct Node *temp = (struct Node*)malloc(sizeof(struct Node));
 
@@ -29,7 +28,6 @@ void enqueue(int value) {
     printf("%d inserted\n", value);
 }
 
-
 void dequeue() {
     if (head == NULL && tail == NULL) {
         printf("Queue is Empty\n");
@@ -37,7 +35,6 @@ void dequeue() {
     }
 
     struct Node *temp = head;
-
 
     if (head == tail) {
         printf("%d deleted\n", temp->data);
@@ -61,8 +58,6 @@ void display() {
     struct Node *current = head;
 
     printf("Queue: ");
-
-
     do {
         printf("%d ", current->data);
         current = current->next;
@@ -71,25 +66,40 @@ void display() {
     printf("\n");
 }
 
-
 int main() {
+    int choice, value;
 
+    while (1) {
+        printf("\n--- Circular Queue Menu ---\n");
+        printf("1. Enqueue\n");
+        printf("2. Dequeue\n");
+        printf("3. Display\n");
+        printf("4. Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
 
-    enqueue(10);
-    enqueue(20);
-    enqueue(30);
+        switch (choice) {
+            case 1:
+                printf("Enter value: ");
+                scanf("%d", &value);
+                enqueue(value);
+                break;
 
-    display();
+            case 2:
+                dequeue();
+                break;
 
+            case 3:
+                display();
+                break;
 
-    dequeue();
-    display();
+            case 4:
+                exit(0);
 
-    dequeue();
-    display();
-
-    dequeue();
-    display();
+            default:
+                printf("Invalid choice\n");
+        }
+    }
 
     return 0;
 }
