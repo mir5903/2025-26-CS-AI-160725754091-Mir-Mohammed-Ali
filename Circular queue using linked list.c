@@ -58,12 +58,13 @@ void display() {
     struct Node *current = head;
 
     printf("Queue: ");
+
     do {
-        printf("%d ", current->data);
+        printf("%d -> ", current->data);
         current = current->next;
     } while (current != head);
 
-    printf("\n");
+    printf("(back to %d)\n", head->data);
 }
 
 int main() {
