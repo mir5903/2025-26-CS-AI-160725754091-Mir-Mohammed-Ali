@@ -1,23 +1,32 @@
 #include <stdio.h>
 
 int main() {
-    int arr[] = {10, 20, 30, 40, 50, 60, 70};
-    int n = 7;
-    int key, low = 0, high = n - 1, mid;
-    int found = 0;
+    int n, key, low, high, mid;
+    
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+
+    printf("Enter sorted elements:\n");
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
 
     printf("Enter element to search: ");
     scanf("%d", &key);
 
-    while (low <= high) {
+    low = 0;
+    high = n - 1;
+
+    while(low <= high) {
         mid = (low + high) / 2;
 
-        if (arr[mid] == key) {
+        if(arr[mid] == key) {
             printf("Element found at position %d", mid + 1);
-            found = 1;
-            break;
+            return 0;
         }
-        else if (key > arr[mid]) {
+        else if(key > arr[mid]) {
             low = mid + 1;
         }
         else {
@@ -25,9 +34,7 @@ int main() {
         }
     }
 
-    if (!found) {
-        printf("Element not found");
-    }
+    printf("Element not found");
 
     return 0;
 }
