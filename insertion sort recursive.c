@@ -2,7 +2,7 @@
 
 // Recursive Insertion Sort
 void insertionSort(int arr[], int n) {
-    int i, key, j;
+    int i, temp, j;
 
     // Base case
     if (n <= 1)
@@ -12,14 +12,14 @@ void insertionSort(int arr[], int n) {
     insertionSort(arr, n - 1);
 
     // Insert last element at correct position
-    key = arr[n - 1];
+    temp = arr[n - 1];
     j = n - 2;
 
-    while (j >= 0 && arr[j] > key) {
+    while (j >= 0 && arr[j] > temp) {
         arr[j + 1] = arr[j];
         j--;
     }
-    arr[j + 1] = key;
+    arr[j + 1] = temp;
 }
 
 int main() {
