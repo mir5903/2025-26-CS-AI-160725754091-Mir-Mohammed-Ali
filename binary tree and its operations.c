@@ -7,24 +7,19 @@ struct node {
     struct node *right;
 };
 
-struct node* createnode(int value) {
-    struct node* temp;
-    temp = (struct node*)malloc(sizeof(struct node));
-    temp->data = value;
-    temp->left = NULL;
-    temp->right = NULL;
-    return temp;
-}
-
-struct node* createtree() {
+// Combined: create node + build tree
+struct node* createtree()
+{
     int value;
+
     printf("Enter value (-1 for no node): ");
     scanf("%d", &value);
 
-    if (value == -1)
+    if(value == -1)
         return NULL;
 
-    struct node* temp = createnode(value);
+    struct node* temp = (struct node*)malloc(sizeof(struct node));
+    temp->data = value;
 
     printf("Enter left child of %d\n", value);
     temp->left = createtree();
@@ -35,8 +30,9 @@ struct node* createtree() {
     return temp;
 }
 
-void inorder(struct node* root) {
-    if (root == NULL)
+void inorder(struct node* root)
+{
+    if(root == NULL)
         return;
 
     inorder(root->left);
@@ -44,8 +40,9 @@ void inorder(struct node* root) {
     inorder(root->right);
 }
 
-void preorder(struct node* root) {
-    if (root == NULL)
+void preorder(struct node* root)
+{
+    if(root == NULL)
         return;
 
     printf("%d ", root->data);
@@ -53,8 +50,9 @@ void preorder(struct node* root) {
     preorder(root->right);
 }
 
-void postorder(struct node* root) {
-    if (root == NULL)
+void postorder(struct node* root)
+{
+    if(root == NULL)
         return;
 
     postorder(root->left);
@@ -62,7 +60,8 @@ void postorder(struct node* root) {
     printf("%d ", root->data);
 }
 
-int main() {
+int main()
+{
     struct node* root = NULL;
 
     printf("Create Binary Tree\n");
